@@ -267,13 +267,13 @@ La respuesta debe ser : 'Hay X mujeres, Y hombres y Z otros' como 'Genero de los
 SELECT concat(
 "Hay", " ",
 (SELECT count(pe.id_people) FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'mujer'), " ",
- "mujeres,", " ", 
- (SELECT count(pe.id_people) AS hombres FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'hombre'), " ",
- "hombres,", " y ",
- (SELECT count(pe.id_people) AS otros FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'otro'), " ",
- "otros"
- ) AS 'Genero de los personajes'
- ;
+"mujeres,", " ", 
+(SELECT count(pe.id_people) AS hombres FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'hombre'), " ",
+"hombres,", " y ",
+(SELECT count(pe.id_people) AS otros FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'otro'), " ",
+"otros"
+) AS 'Genero de los personajes'
+;
 -- SELECT count(pe.id_people) AS mujeres FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'mujer';
 -- SELECT count(pe.id_people) AS hombres FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'hombre';
 -- SELECT count(pe.id_people) AS otros FROM people pe JOIN genero ge ON pe.genero = ge.id WHERE ge.genero = 'otro';
